@@ -340,7 +340,7 @@ function custom_phone_validation($result, $tag)
         }
 
         if (!$is_valid) {
-            $result->invalidate($tag, __("Невірний формат телефону", 'nans'));
+            $result->invalidate($tag, __("Invalid phone", 'theme'));
         }
     }
 
