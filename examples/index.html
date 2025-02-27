@@ -1,19 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Input mask</title>
     <script src="../js/mask.js"></script>
     <script src="../js/mask_list.js"></script>
-</head>
+  </head>
 
-<body>
-    <input type="text" name="phone" value="">
+  <body>
+    Validation:
+    <input type="text" class="phone-input" />
+    <div id="result"></div>
+    <button class="check-validation">Check validation</button>
+
+    <br/><br/>
+    Auto validation: 
+    <input type="text" class="phone-input-auto" style="outline: none" />
+
+    <style>
+      .phone-input-auto.valid {
+        border: 2px solid green;
+      }
+      .phone-input-auto.invalid {
+        border: 2px solid red;
+      }
+    </style>
     <script>
-        mask("input");
-    </script>
-</body>
+      // Initialize with manual validation
+      const inputs = mask(".phone-input");
 
+      // Initialize with auto validation
+      mask(".phone-input-auto", { autoValidate: true });
+
+      // Check validation manually
+      
+      
+
+      document.querySelector(".check-validation").addEventListener("click", () => {
+        const result = document.querySelector("#result");
+        const input = document.querySelector(".phone-input");
+        result.innerHTML = JSON.stringify(input.validate());
+        console.log(input.validate());
+      });
+    </script>
+  </body>
 </html>
